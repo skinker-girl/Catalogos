@@ -1,1 +1,353 @@
-Hola mundo
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo de Productos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --cream-dark: #ede5d4;
+      --brown: #5c3d2e;
+      --brown-dark: #3b2314;
+      --brown-mid: #7d5a47;
+      --gold: #c49a6c;
+      --text: #2c1a0e;
+      --text-light: #6b4c38;
+      --white: #fff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--brown-dark);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 4px solid var(--gold);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2.2rem;
+      color: var(--cream);
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .header-badge {
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 2px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 820px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      border-left: 3px solid var(--gold);
+      padding-left: 10px;
+      margin-bottom: -20px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border: 1px solid #e0d5c5;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 2px 18px rgba(60,30,10,.07);
+      transition: box-shadow .3s;
+    }
+    .card:hover { box-shadow: 0 6px 30px rgba(60,30,10,.13); }
+    .card.reverse { grid-template-columns: 1fr 240px; }
+
+    /* image */
+    .card-img {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream-dark);
+      min-height: 260px;
+    }
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .card:hover .card-img img { transform: scale(1.04); }
+    .card-img .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--brown-dark);
+      color: var(--cream);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+    }
+    .card-img .badge.discount {
+      background: var(--gold);
+      color: var(--brown-dark);
+      font-size: 0.85rem;
+    }
+
+    /* info */
+    .card-info {
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-info .product-name {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.85rem;
+      color: var(--brown-dark);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .card-info .tag {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 14px 0;
+    }
+    .card-info .desc {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    .card-info .note {
+      font-size: 0.78rem;
+      color: var(--brown-mid);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* meta rows */
+    .card-meta {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.9;
+    }
+    .card-meta strong {
+      color: var(--brown-dark);
+      font-weight: 700;
+    }
+
+    /* ── PRICE ARROW ── */
+    .price-row {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .price-arrow {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      background: var(--brown);
+      color: var(--cream);
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 10px 20px 10px 16px;
+      letter-spacing: 1px;
+    }
+    .price-arrow::after {
+      content: '';
+      position: absolute;
+      right: -16px;
+      top: 0;
+      border-left: 16px solid var(--brown);
+      border-top: 22px solid transparent;
+      border-bottom: 22px solid transparent;
+    }
+    .price-old {
+      font-size: 0.9rem;
+      color: var(--brown-mid);
+      text-decoration: line-through;
+    }
+
+    /* ── WIDE CARD (horizontal full) ── */
+    .card.full {
+      grid-template-columns: 1fr;
+    }
+    .card.full .card-img { min-height: 200px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--brown-dark);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .card, .card.reverse {
+        grid-template-columns: 1fr;
+      }
+      .card-img { min-height: 220px; }
+      header { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div>
+    <h1>Mi Catálogo</h1>
+    <p>Colección de productos seleccionados</p>
+  </div>
+  <div class="header-badge">Temporada 2025</div>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <p class="section-label">Cuidado facial</p>
+
+  <!-- Producto 1 -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza el src con la URL real de tu imagen -->
+      <img src="https://via.placeholder.com/480x380/a3c4bc/3b2314?text=Gel+Limpiador" alt="Gel Limpiador"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Oriflame · Optimals</p>
+        <h2 class="product-name">Gel limpiador</h2>
+        <div class="divider"></div>
+        <p class="desc">Para piel seca. Limpieza suave que respeta la barrera hidrolipídica natural de la piel, dejándola tersa y confortable.</p>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$170.00 MX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Producto 2 -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Oriflame · Pure Skin</p>
+        <h2 class="product-name">Gel para imperfecciones</h2>
+        <div class="divider"></div>
+        <p class="desc">Ideal para piel grasa y acné. Fórmula de acción rápida que reduce enrojecimiento y minimiza imperfecciones visibles.</p>
+        <p class="note">solo por pedido…</p>
+      </div>
+      <div class="price-row">
+        <div class="card-img" style="display:none"></div>
+        <div class="price-arrow">$140 MX</div>
+        <span style="font-size:.75rem;color:var(--brown-mid);letter-spacing:1px;">1 PZ disponible</span>
+      </div>
+    </div>
+    <div class="card-img">
+      <img src="https://via.placeholder.com/480x380/e8c97e/3b2314?text=Gel+Imperfecciones" alt="Gel para imperfecciones"/>
+    </div>
+  </div>
+
+  <p class="section-label">Cremas & tratamientos</p>
+
+  <!-- Producto 3 -->
+  <div class="card">
+    <div class="card-img">
+      <div class="badge discount">−20%</div>
+      <img src="https://via.placeholder.com/480x380/d4c5b0/3b2314?text=Light+Cream" alt="Eyes Out Light Cream"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Oriflame · Optimals</p>
+        <h2 class="product-name">Eyes Out Light Cream</h2>
+        <div class="divider"></div>
+        <p class="desc">Crema iluminadora de ojos. Referencia Morgana.</p>
+        <div class="card-meta">
+          <p><strong>Tallas disponibles:</strong> XS, S, M, XL, L</p>
+          <p><strong>Colores disponibles:</strong> Café, Beige</p>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$31.900</div>
+        <span class="price-old">$39.900</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Producto 4 - ejemplo extra -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Colección nueva</p>
+        <h2 class="product-name">Sérum hidratante</h2>
+        <div class="divider"></div>
+        <p class="desc">Hidratación profunda para pieles mixtas. Con ácido hialurónico y extracto de aloe vera para un efecto calmante inmediato.</p>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$220.00 MX</div>
+      </div>
+    </div>
+    <div class="card-img">
+      <img src="https://via.placeholder.com/480x380/b8d4c8/3b2314?text=Sérum" alt="Sérum hidratante"/>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>Catálogo &nbsp;·&nbsp; Todos los precios en MXN &nbsp;·&nbsp; Sujeto a disponibilidad</p>
+</footer>
+
+</body>
+</html>

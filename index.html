@@ -176,13 +176,15 @@
       font-style: italic;
       margin-top: 8px;
     }
-
-    /* meta rows */
     .card-meta {
       margin-top: 10px;
       font-size: 0.78rem;
       color: var(--brown-mid);
       line-height: 1.9;
+    }
+    .card-meta strong {
+      color: var(--brown-dark);
+      font-weight: 700;
     }
 
     /* ── PRICE ARROW ── */
@@ -251,14 +253,63 @@
 
 <main>
 
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
   <p class="section-label">Cuidado corporal</p>
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
 
-  <!-- 1. Crema de Ducha Milk & Honey Gold -->
+  <!-- ORIGINAL 1 · Exfoliante Corporal Suavizante -->
   <div class="card">
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/crema-ducha-milk-honey.jpg -->
+      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44370%2F44370_1.png&MediaId=17029025&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Exfoliante Corporal Suavizante"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Oriflame · Optimals</p>
+        <h2 class="product-name">Exfoliante Corporal Suavizante</h2>
+        <div class="divider"></div>
+        <p class="desc">Exfoliante corporal que ayuda a estimular la renovación cutánea, revitaliza y deja la piel suave y flexible. Contiene exfoliantes de origen natural combinados con ácido glicólico (AHA).
+          <ul>
+            <li>Revitaliza y exfolia la piel.</li>
+            <li>Ayuda a estimular la renovación de la piel.</li>
+            <li>Deja la piel suave y flexible.</li>
+          </ul>
+        </p>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$170.00 MX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORIGINAL 2 · Exfoliante Corporal de Azúcar Milk & Honey Gold -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Oriflame · Pure Skin</p>
+        <h2 class="product-name">Exfoliante Corporal de Azúcar Milk &amp; Honey Gold</h2>
+        <div class="divider"></div>
+        <p class="desc">Lujoso exfoliante corporal con extractos orgánicos de leche y miel, y exfoliantes de origen natural. Exfolia suavemente las células muertas y ayuda a acondicionar la piel para dejarla tersa, suave, flexible y exquisitamente perfumada.
+          <ul>
+            <li>La leche y la miel hidratan y nutren la piel</li>
+            <li>Textura suave y apta para el uso diario</li>
+            <li>Dermatológicamente probado</li>
+          </ul>
+        </p>
+        <p class="note">solo por pedido…</p>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$140 MX</div>
+        <span style="font-size:.75rem;color:var(--brown-mid);letter-spacing:1px;">1 PZ disponible</span>
+      </div>
+    </div>
+    <div class="card-img">
+      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46969%2F46969_1.png&MediaId=19554576&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Exfoliante Corporal de Azúcar"/>
+    </div>
+  </div>
+
+  <!-- PDF 1 · Crema de Ducha Milk & Honey Gold -->
+  <div class="card">
+    <div class="card-img">
       <img src="img/crema-ducha-milk-honey.jpg" alt="Crema de Ducha Milk & Honey Gold"/>
     </div>
     <div class="card-info">
@@ -282,7 +333,7 @@
     </div>
   </div>
 
-  <!-- 2. Crema Nutritiva para Manos y Cuerpo Milk & Honey Gold -->
+  <!-- PDF 2 · Crema Nutritiva para Manos y Cuerpo Milk & Honey Gold -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -303,16 +354,14 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/crema-nutritiva-manos-cuerpo.jpg -->
       <img src="img/crema-nutritiva-manos-cuerpo.jpg" alt="Crema Nutritiva Manos y Cuerpo"/>
     </div>
   </div>
 
-  <!-- 3. Crema para Manos Hidratante Milk & Honey Gold -->
+  <!-- PDF 3 · Crema para Manos Hidratante Milk & Honey Gold -->
   <div class="card">
     <div class="card-img">
       <div class="badge discount">−47%</div>
-      <!-- Reemplaza con tu imagen: img/crema-manos-milk-honey.jpg -->
       <img src="img/crema-manos-milk-honey.jpg" alt="Crema para Manos Hidratante Milk & Honey Gold"/>
     </div>
     <div class="card-info">
@@ -336,11 +385,11 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
   <p class="section-label">Cuidado facial</p>
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
 
-  <!-- 4. Limpiador Cremoso Optimals -->
+  <!-- PDF 4 · Limpiador Cremoso Optimals -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -362,15 +411,13 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/limpiador-cremoso-optimals.jpg -->
       <img src="img/limpiador-cremoso-optimals.jpg" alt="Limpiador Cremoso Optimals"/>
     </div>
   </div>
 
-  <!-- 5. Limpiador Refrescante en Gel Novage+ -->
+  <!-- PDF 5 · Limpiador Refrescante en Gel Novage+ -->
   <div class="card">
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/limpiador-gel-novage.jpg -->
       <img src="img/limpiador-gel-novage.jpg" alt="Limpiador Refrescante en Gel Novage+"/>
     </div>
     <div class="card-info">
@@ -394,7 +441,7 @@
     </div>
   </div>
 
-  <!-- 6. Tónico Purificante Pure Skin -->
+  <!-- PDF 6 · Tónico Purificante Pure Skin -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -409,17 +456,15 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/tonico-pure-skin.jpg -->
       <img src="img/tonico-pure-skin.jpg" alt="Tónico Purificante Pure Skin"/>
     </div>
   </div>
 
-  <!-- 7. Gel Facial SOS Antimperfecciones Pure Skin -->
+  <!-- PDF 7 · Gel Facial SOS Antimperfecciones Pure Skin -->
   <div class="card">
     <div class="card-img">
       <div class="badge discount">−32%</div>
-      <!-- Reemplaza con tu imagen: img/gel-sos-pure-skin.jpg -->
-      <img src="img/gel-sos-pure-skin.jpg" alt="Gel Facial SOS Antimperfecciones Pure Skin"/>
+      <img src="img/gel-sos-pure-skin.jpg" alt="Gel Facial SOS Pure Skin"/>
     </div>
     <div class="card-info">
       <div>
@@ -442,7 +487,7 @@
     </div>
   </div>
 
-  <!-- 8. Crema Facial Hidratante Love Nature -->
+  <!-- PDF 8 · Crema Facial Hidratante Love Nature -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -464,15 +509,13 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/crema-love-nature.jpg -->
       <img src="img/crema-love-nature.jpg" alt="Crema Facial Love Nature"/>
     </div>
   </div>
 
-  <!-- 9. Crema de Día Waunt -->
+  <!-- PDF 9 · Crema de Día Waunt -->
   <div class="card">
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/crema-dia-waunt.jpg -->
       <img src="img/crema-dia-waunt.jpg" alt="Crema de Día Waunt"/>
     </div>
     <div class="card-info">
@@ -495,11 +538,11 @@
     </div>
   </div>
 
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
   <p class="section-label">Tratamientos &amp; serums</p>
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
 
-  <!-- 10. Suero Antimanchas Even Out Optimals -->
+  <!-- PDF 10 · Suero Antimanchas Even Out Optimals -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -520,15 +563,13 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/suero-antimanchas-optimals.jpg -->
       <img src="img/suero-antimanchas-optimals.jpg" alt="Suero Antimanchas Even Out Optimals"/>
     </div>
   </div>
 
-  <!-- 11. Crema Ligera Antimanchas Even Out Optimals -->
+  <!-- PDF 11 · Crema Ligera Antimanchas Even Out Optimals -->
   <div class="card">
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/crema-ligera-antimanchas-optimals.jpg -->
       <img src="img/crema-ligera-antimanchas-optimals.jpg" alt="Crema Ligera Antimanchas Even Out Optimals"/>
     </div>
     <div class="card-info">
@@ -551,8 +592,29 @@
     </div>
   </div>
 
-  <!-- 12. Peeling AHA Proceuticals Novage+ -->
+  <!-- ORIGINAL 4 · Muestra Gel-Sérum Wellosophy -->
   <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Wellosophy</p>
+        <h2 class="product-name">Muestra Gel-Sérum Suavizante y Equilibrante Wellosophy</h2>
+        <div class="divider"></div>
+        <p class="desc">Gel-sérum suavizante y equilibrante. Muestra de producto para conocer su textura ligera y su fórmula diseñada para equilibrar y suavizar la piel con uso diario.</p>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$220.00 MX</div>
+      </div>
+    </div>
+    <div class="card-img">
+      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46107%2F46107_1.png&MediaId=19387770&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel-Sérum Wellosophy"/>
+    </div>
+  </div>
+
+  <!-- PDF 12 · Peeling AHA Proceuticals Novage+ -->
+  <div class="card">
+    <div class="card-img">
+      <img src="img/peeling-aha-novage.jpg" alt="Peeling AHA Proceuticals Novage+"/>
+    </div>
     <div class="card-info">
       <div>
         <p class="tag">Novage+</p>
@@ -572,18 +634,10 @@
         <span class="price-old">$750.00</span>
       </div>
     </div>
-    <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/peeling-aha-novage.jpg -->
-      <img src="img/peeling-aha-novage.jpg" alt="Peeling AHA Proceuticals Novage+"/>
-    </div>
   </div>
 
-  <!-- 13. Multiprotector Solar FPS 50 Optimals -->
-  <div class="card">
-    <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/protector-solar-optimals.jpg -->
-      <img src="img/protector-solar-optimals.jpg" alt="Multiprotector Solar FPS 50 Optimals"/>
-    </div>
+  <!-- PDF 13 · Multiprotector Solar FPS 50 Optimals -->
+  <div class="card reverse">
     <div class="card-info">
       <div>
         <p class="tag">Optimals</p>
@@ -602,13 +656,40 @@
         <div class="price-arrow">$390.00 MX</div>
       </div>
     </div>
+    <div class="card-img">
+      <img src="img/protector-solar-optimals.jpg" alt="Multiprotector Solar FPS 50 Optimals"/>
+    </div>
   </div>
 
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
   <p class="section-label">Maquillaje</p>
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
 
-  <!-- 14. Base de Maquillaje Eternal Glow FPS 25 -->
+  <!-- ORIGINAL 3 · Base Ultrafina Perfeccionadora Giordani Gold -->
+  <div class="card">
+    <div class="card-img">
+      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F32923%2F32923_1.png&MediaId=9888184&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Base Ultrafina Giordani Gold"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Oriflame · Giordani Gold</p>
+        <h2 class="product-name">Base Ultrafina Perfeccionadora Efecto Natural</h2>
+        <div class="divider"></div>
+        <p class="desc">Base ultrafina perfeccionadora acabado natural.
+          <ul>
+            <li>La piel luce luminosa, difuminando imperfecciones para una apariencia más joven.</li>
+            <li>Base con FPS 12 para proteger la piel de los radicales libres.</li>
+            <li>Ideal para piel normal y grasa.</li>
+          </ul>
+        </p>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$31.900</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PDF 14 · Base de Maquillaje Eternal Glow FPS 25 -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -629,19 +710,17 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/base-eternal-glow.jpg -->
       <img src="img/base-eternal-glow.jpg" alt="Base de Maquillaje Eternal Glow FPS 25"/>
     </div>
   </div>
 
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
   <p class="section-label">Fragancias</p>
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
 
-  <!-- 15. Eclat Mademoiselle Eau de Toilette -->
+  <!-- PDF 15 · Eclat Mademoiselle Eau de Toilette -->
   <div class="card">
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/eclat-mademoiselle.jpg -->
       <img src="img/eclat-mademoiselle.jpg" alt="Eclat Mademoiselle Eau de Toilette"/>
     </div>
     <div class="card-info">
@@ -658,7 +737,7 @@
     </div>
   </div>
 
-  <!-- 16. Eau de Toilette Ascendant -->
+  <!-- PDF 16 · Eau de Toilette Ascendant -->
   <div class="card reverse">
     <div class="card-info">
       <div>
@@ -679,19 +758,17 @@
       </div>
     </div>
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/eau-de-toilette-ascendant.jpg -->
       <img src="img/eau-de-toilette-ascendant.jpg" alt="Eau de Toilette Ascendant"/>
     </div>
   </div>
 
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
   <p class="section-label">Sets &amp; regalos</p>
-  <!-- ════════════════════════════ -->
+  <!-- ════════════════════════════════════════ -->
 
-  <!-- 17. Lote Love Potion Cherry on Top -->
+  <!-- PDF 17 · Lote Love Potion Cherry on Top -->
   <div class="card">
     <div class="card-img">
-      <!-- Reemplaza con tu imagen: img/lote-love-potion.jpg -->
       <img src="img/lote-love-potion.jpg" alt="Lote Love Potion Cherry on Top"/>
     </div>
     <div class="card-info">

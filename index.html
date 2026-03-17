@@ -139,7 +139,7 @@
     .card-info .product-name {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.85rem;
+      font-size: 1.6rem;
       color: var(--brown-dark);
       line-height: 1.2;
       margin-bottom: 10px;
@@ -163,6 +163,13 @@
       color: var(--text-light);
       line-height: 1.7;
     }
+    .card-info .desc ul {
+      margin-top: 8px;
+      padding-left: 18px;
+    }
+    .card-info .desc ul li {
+      margin-bottom: 3px;
+    }
     .card-info .note {
       font-size: 0.78rem;
       color: var(--brown-mid);
@@ -172,14 +179,10 @@
 
     /* meta rows */
     .card-meta {
-      margin-top: 16px;
-      font-size: 0.8rem;
-      color: var(--text-light);
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--brown-mid);
       line-height: 1.9;
-    }
-    .card-meta strong {
-      color: var(--brown-dark);
-      font-weight: 700;
     }
 
     /* ── PRICE ARROW ── */
@@ -188,6 +191,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      flex-wrap: wrap;
     }
     .price-arrow {
       position: relative;
@@ -197,7 +201,7 @@
       color: var(--cream);
       font-size: 1.3rem;
       font-weight: 700;
-      padding: 10px 20px 10px 16px;
+      padding: 10px 28px 10px 16px;
       letter-spacing: 1px;
     }
     .price-arrow::after {
@@ -215,12 +219,6 @@
       text-decoration: line-through;
     }
 
-    /* ── WIDE CARD (horizontal full) ── */
-    .card.full {
-      grid-template-columns: 1fr;
-    }
-    .card.full .card-img { min-height: 200px; }
-
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -234,9 +232,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .card, .card.reverse {
-        grid-template-columns: 1fr;
-      }
+      .card, .card.reverse { grid-template-columns: 1fr; }
       .card-img { min-height: 220px; }
       header { flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -253,96 +249,462 @@
   <div class="header-badge">Temporada 2025</div>
 </header>
 
-<!-- ══ MAIN ══ -->
 <main>
 
+  <!-- ════════════════════════════ -->
+  <p class="section-label">Cuidado corporal</p>
+  <!-- ════════════════════════════ -->
+
+  <!-- 1. Crema de Ducha Milk & Honey Gold -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/crema-ducha-milk-honey.jpg -->
+      <img src="img/crema-ducha-milk-honey.jpg" alt="Crema de Ducha Milk & Honey Gold"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Milk &amp; Honey Gold</p>
+        <h2 class="product-name">Crema de Ducha Milk &amp; Honey Gold</h2>
+        <div class="divider"></div>
+        <p class="desc">Esta indulgente y espumosa crema de ducha está enriquecida con extractos orgánicos de leche y miel. Hidrata y nutre para dejar la piel deliciosamente suave, tersa, limpia y perfumada.
+          <ul>
+            <li>La leche y la miel hidratan y nutren la piel</li>
+            <li>Con glicerina hidratante</li>
+            <li>Dermatológicamente probado</li>
+          </ul>
+        </p>
+        <div class="card-meta">250 ml · Ref. 46970</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$149.90 MX</div>
+        <span class="price-old">$260.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Crema Nutritiva para Manos y Cuerpo Milk & Honey Gold -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Milk &amp; Honey Gold</p>
+        <h2 class="product-name">Crema Nutritiva para Manos y Cuerpo Milk &amp; Honey Gold</h2>
+        <div class="divider"></div>
+        <p class="desc">Esta crema para manos y cuerpo, rica y mimosa, delicadamente perfumada, está formulada con deliciosos extractos orgánicos de leche y miel. Hidrata y nutre intensamente para conseguir una piel suave, tersa y luminosa.
+          <ul>
+            <li>48h de hidratación intensa</li>
+            <li>Incrementa la humectación de la piel en un 59%</li>
+            <li>Dermatológicamente probado</li>
+          </ul>
+        </p>
+        <div class="card-meta">250 ml · Ref. 46968</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$300.00 MX</div>
+      </div>
+    </div>
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/crema-nutritiva-manos-cuerpo.jpg -->
+      <img src="img/crema-nutritiva-manos-cuerpo.jpg" alt="Crema Nutritiva Manos y Cuerpo"/>
+    </div>
+  </div>
+
+  <!-- 3. Crema para Manos Hidratante Milk & Honey Gold -->
+  <div class="card">
+    <div class="card-img">
+      <div class="badge discount">−47%</div>
+      <!-- Reemplaza con tu imagen: img/crema-manos-milk-honey.jpg -->
+      <img src="img/crema-manos-milk-honey.jpg" alt="Crema para Manos Hidratante Milk & Honey Gold"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Milk &amp; Honey Gold</p>
+        <h2 class="product-name">Crema para Manos Hidratante Milk &amp; Honey Gold</h2>
+        <div class="divider"></div>
+        <p class="desc">Esta rica crema de manos está enriquecida con extractos orgánicos de leche y miel, y glicerina añadida. Su fórmula no grasa se absorbe fácilmente y deja la piel perfumada, suave y nutrida durante todo el día.
+          <ul>
+            <li>Hidratación 24 horas</li>
+            <li>La leche y la miel hidratan y nutren la piel</li>
+            <li>Dermatológicamente probado</li>
+          </ul>
+        </p>
+        <div class="card-meta">75 ml · Ref. 47224</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$89.90 MX</div>
+        <span class="price-old">$170.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ -->
   <p class="section-label">Cuidado facial</p>
+  <!-- ════════════════════════════ -->
 
-  <!-- Producto 1 -->
-  <div class="card">
-    <div class="card-img">
-      <!-- Reemplaza el src con la URL real de tu imagen -->
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44370%2F44370_1.png&MediaId=17029025&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel Limpiador"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Oriflame · Optimals</p>
-        <h2 class="product-name">Exfoliante Corporal Suavizante</h2>
-        <div class="divider"></div>
-        <p class="desc">Exfoliante corporal que ayuda a estimular la renovación cutánea, revitaliza y deja la piel suave y flexible. Contiene exfoliantes de origen natural combinados con ácido glicólico (AHA).</p>
-                        <li>Revitaliza y exfolia la piel*.</li>
-                        <li>Ayuda a estimular la renovación de la piel.</li>
-                        <li>Deja la piel suave y flexible*.</li>
-      </div>
-      <div class="price-row">
-        <div class="price-arrow">$170.00 MX</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Producto 2 -->
+  <!-- 4. Limpiador Cremoso Optimals -->
   <div class="card reverse">
     <div class="card-info">
       <div>
-        <p class="tag">Oriflame · Pure Skin</p>
-        <h2 class="product-name">Exfoliante Corporal de Azúcar Milk & Honey Gold</h2>
+        <p class="tag">Optimals</p>
+        <h2 class="product-name">Limpiador Cremoso Optimals</h2>
         <div class="divider"></div>
-        <p class="desc">Lujoso exfoliante corporal con extractos orgánicos de leche y miel, y exfoliantes de origen natural. Exfolia suavemente las células muertas y ayuda a acondicionar la piel para dejarla tersa, suave, flexible y exquisitamente perfumada.
-                        <li>La leche y la miel hidratan y nutren la piel</li>
-                        <li>Textura suave y apta para el uso diario</li>
-                        <li>Dermatológicamente probado</li></p>
+        <p class="desc">Este limpiador suave y cremoso está diseñado para pieles secas. Está formulado con un complejo lipídico que elimina eficazmente el maquillaje, el exceso de grasa y las impurezas sin restar hidratación a la piel.
+          <ul>
+            <li>Limpia eficazmente sin deshidratar la piel</li>
+            <li>La piel está más suave desde el primer lavado</li>
+            <li>Preserva los niveles de hidratación de la piel</li>
+          </ul>
+        </p>
+        <div class="card-meta">150 ml · Ref. 46900</div>
       </div>
       <div class="price-row">
-        <div class="card-img" style="display:none"></div>
-        <div class="price-arrow">$140 MX</div>
+        <div class="price-arrow">$199.90 MX</div>
+        <span class="price-old">$260.00</span>
       </div>
     </div>
     <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46969%2F46969_1.png&MediaId=19554576&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel para imperfecciones"/>
+      <!-- Reemplaza con tu imagen: img/limpiador-cremoso-optimals.jpg -->
+      <img src="img/limpiador-cremoso-optimals.jpg" alt="Limpiador Cremoso Optimals"/>
     </div>
   </div>
 
-  <p class="section-label">Cremas & tratamientos</p>
-
-  <!-- Producto 3 -->
+  <!-- 5. Limpiador Refrescante en Gel Novage+ -->
   <div class="card">
     <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F32923%2F32923_1.png&MediaId=9888184&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Eyes Out Light Cream"/>
+      <!-- Reemplaza con tu imagen: img/limpiador-gel-novage.jpg -->
+      <img src="img/limpiador-gel-novage.jpg" alt="Limpiador Refrescante en Gel Novage+"/>
     </div>
     <div class="card-info">
       <div>
-        <p class="tag">Oriflame · Optimals</p>
-        <h2 class="product-name">Giordani Gold Base Ultrafina Perfeccionadora Efecto Natural</h2>
+        <p class="tag">Novage+</p>
+        <h2 class="product-name">Limpiador Refrescante en Gel</h2>
         <div class="divider"></div>
-        <p class="desc">Base ultrafina perfeccionadora acabado natural.
-                        <li>La piel luce luminosa, difuminando imperfecciones para una apariencia más joven.</li>
-                        <li>Base con FPS12 para proteger la piel de los radicales libres.</li>
-                        <li>Ideal para piel normal y grasa.</li></p>
-        <div class="card-meta">
-        </div>
+        <p class="desc">Limpiador refrescante en gel que mantiene la barrera de protección e hidratación de la piel. Se transforma en suave espuma cuando se combina con agua. Formulado para eliminar el maquillaje, contaminantes y Filtro Solar.
+          <ul>
+            <li>Delicada y eficaz limpieza que no daña la piel</li>
+            <li>Preserva los lípidos naturales de la piel</li>
+            <li>Adecuado para todo tipo de piel, incluso piel sensible</li>
+          </ul>
+        </p>
+        <div class="card-meta">150 ml · Ref. 41029</div>
       </div>
       <div class="price-row">
-        <div class="price-arrow">$31.900</div>
+        <div class="price-arrow">$489.90 MX</div>
+        <span class="price-old">$560.00</span>
       </div>
     </div>
   </div>
 
-  <!-- Producto 4 - ejemplo extra -->
+  <!-- 6. Tónico Purificante Pure Skin -->
   <div class="card reverse">
     <div class="card-info">
       <div>
-        <p class="tag">Colección nueva</p>
-        <h2 class="product-name">Muestra Gel-Sérum Suavizante y Equilibrante Wellosophy</h2>
+        <p class="tag">Pure Skin</p>
+        <h2 class="product-name">Tónico Purificante Pure Skin</h2>
         <div class="divider"></div>
-        <p class="desc">Dimensiones: Longitud 66mm, Altura 81mm, Profundidad 1mm, Peso 0.003g
-                        Nombre completo del producto: Muestra Gel-Sérum Suavizante y Equilibrante Wellosophy</p>
+        <p class="desc">Tónico purificante de acción profunda con BHA y PHA ácidos para equilibrar la piel con tendencia grasa, controlar el exceso de sebo y afinar los poros visiblemente.</p>
+        <div class="card-meta">150 ml · Ref. 41672</div>
       </div>
       <div class="price-row">
-        <div class="price-arrow">$220.00 MX</div>
+        <div class="price-arrow">$260.00 MX</div>
       </div>
     </div>
     <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46107%2F46107_1.png&MediaId=19387770&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Sérum hidratante"/>
+      <!-- Reemplaza con tu imagen: img/tonico-pure-skin.jpg -->
+      <img src="img/tonico-pure-skin.jpg" alt="Tónico Purificante Pure Skin"/>
+    </div>
+  </div>
+
+  <!-- 7. Gel Facial SOS Antimperfecciones Pure Skin -->
+  <div class="card">
+    <div class="card-img">
+      <div class="badge discount">−32%</div>
+      <!-- Reemplaza con tu imagen: img/gel-sos-pure-skin.jpg -->
+      <img src="img/gel-sos-pure-skin.jpg" alt="Gel Facial SOS Antimperfecciones Pure Skin"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Pure Skin</p>
+        <h2 class="product-name">Gel Facial SOS Antimperfecciones Pure Skin</h2>
+        <div class="divider"></div>
+        <p class="desc">Gel antimanchas de acción rápida que reduce el tamaño de las imperfecciones y el enrojecimiento en 8 horas y evita que los puntos negros empeoren en 24 horas.
+          <ul>
+            <li>Reduce las imperfecciones hasta un 40% en 24 horas</li>
+            <li>Evita que las manchas empeoren en 24 horas</li>
+            <li>Reduce el tamaño de las manchas y el enrojecimiento en 8 horas</li>
+          </ul>
+        </p>
+        <div class="card-meta">6 ml · Ref. 41676</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$149.90 MX</div>
+        <span class="price-old">$220.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Crema Facial Hidratante Love Nature -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Love Nature</p>
+        <h2 class="product-name">Crema Facial Hidratante con Aloe Vera y Piña Orgánicos</h2>
+        <div class="divider"></div>
+        <p class="desc">Crema facial hidratante con Aloe Vera y extracto de piña orgánica que hidrata la piel en profundidad para un aspecto saludable.
+          <ul>
+            <li>Ayuda a mantener una piel sana y luminosa</li>
+            <li>Hidrata intensamente para que la piel esté tersa y suave</li>
+            <li>Deja la piel fresca e hidratada sin sensación pegajosa</li>
+          </ul>
+        </p>
+        <div class="card-meta">50 ml · Ref. 46071</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$99.90 MX</div>
+        <span class="price-old">$200.00</span>
+      </div>
+    </div>
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/crema-love-nature.jpg -->
+      <img src="img/crema-love-nature.jpg" alt="Crema Facial Love Nature"/>
+    </div>
+  </div>
+
+  <!-- 9. Crema de Día Waunt -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/crema-dia-waunt.jpg -->
+      <img src="img/crema-dia-waunt.jpg" alt="Crema de Día Waunt"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Waunt</p>
+        <h2 class="product-name">Crema de Día</h2>
+        <div class="divider"></div>
+        <p class="desc">Crema de día aterciopelada con una textura esponjosa y batida que se funde con la piel y cubre al instante los tonos rojizos. Suaviza y calma la piel a la vez que la hidrata durante 24 horas. Cuidado de la piel vegano.
+          <ul>
+            <li>Efecto imprimación que difumina al instante los tonos rojos de la piel</li>
+            <li>Alivia y calma la piel</li>
+            <li>Repone e hidrata incluso la piel seca durante 24 horas</li>
+          </ul>
+        </p>
+        <div class="card-meta">50 ml · Ref. 41365</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$560.00 MX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ -->
+  <p class="section-label">Tratamientos &amp; serums</p>
+  <!-- ════════════════════════════ -->
+
+  <!-- 10. Suero Antimanchas Even Out Optimals -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Optimals</p>
+        <h2 class="product-name">Suero Antimanchas Even Out Optimals</h2>
+        <div class="divider"></div>
+        <p class="desc">Este suero ayuda a combatir la hiperpigmentación y a potenciar la renovación celular superficial, para reducir visiblemente la opacidad y mejorar la textura de la piel.
+          <ul>
+            <li>La piel luce resplandeciente desde el primer uso</li>
+            <li>Con extracto de algas arco iris, niacinamida y ácido glicólico</li>
+            <li>Ideal para todo tipo de pieles, incluidas las sensibles</li>
+          </ul>
+        </p>
+        <div class="card-meta">30 ml · Ref. 45248</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$510.00 MX</div>
+      </div>
+    </div>
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/suero-antimanchas-optimals.jpg -->
+      <img src="img/suero-antimanchas-optimals.jpg" alt="Suero Antimanchas Even Out Optimals"/>
+    </div>
+  </div>
+
+  <!-- 11. Crema Ligera Antimanchas Even Out Optimals -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/crema-ligera-antimanchas-optimals.jpg -->
+      <img src="img/crema-ligera-antimanchas-optimals.jpg" alt="Crema Ligera Antimanchas Even Out Optimals"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Optimals</p>
+        <h2 class="product-name">Crema Ligera Antimanchas Even Out Optimals</h2>
+        <div class="divider"></div>
+        <p class="desc">Esta crema hidratante ligera y sin aceites ayuda a combatir la hiperpigmentación, hidrata y favorece la salud y la función de la barrera cutánea para conseguir una piel radiante y luminosa.
+          <ul>
+            <li>Ayuda a difuminar y prevenir las manchas oscuras</li>
+            <li>No comedogénico. Ideal para pieles grasas</li>
+            <li>Con extracto de algas arco iris, niacinamida y paraprobiótico</li>
+          </ul>
+        </p>
+        <div class="card-meta">50 ml · Ref. 45243</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$400.00 MX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Peeling AHA Proceuticals Novage+ -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Novage+</p>
+        <h2 class="product-name">Peeling AHA Proceuticals Novage+</h2>
+        <div class="divider"></div>
+        <p class="desc">Peeling facial con un 6% de AHA para revitalizar la suavidad y el brillo de la piel, con una combinación de ácido glicólico y ácido láctico, junto con pantenol calmante. Exfolia las células muertas y revela las células más jóvenes.
+          <ul>
+            <li>92% afirma que disminuye la apariencia de poros abiertos</li>
+            <li>91% afirma que la piel luce más fresca</li>
+            <li>89% afirma que suaviza la textura de la piel</li>
+          </ul>
+        </p>
+        <div class="card-meta">30 ml · Ref. 47104</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$619.90 MX</div>
+        <span class="price-old">$750.00</span>
+      </div>
+    </div>
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/peeling-aha-novage.jpg -->
+      <img src="img/peeling-aha-novage.jpg" alt="Peeling AHA Proceuticals Novage+"/>
+    </div>
+  </div>
+
+  <!-- 13. Multiprotector Solar FPS 50 Optimals -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/protector-solar-optimals.jpg -->
+      <img src="img/protector-solar-optimals.jpg" alt="Multiprotector Solar FPS 50 Optimals"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Optimals</p>
+        <h2 class="product-name">Multiprotector Solar Uso Diario FPS 50 Optimals</h2>
+        <div class="divider"></div>
+        <p class="desc">Este protector facial ligero y sin aceite protege la piel de los rayos UVA y UVB y la contaminación, refuerza las defensas antioxidantes y reduce la opacidad para una tez radiante. Se absorbe sin dejar residuo blanco.
+          <ul>
+            <li>Protege contra los rayos UVA, UVB y la contaminación</li>
+            <li>Protección UVA FPS 50+</li>
+            <li>Reduce la opacidad</li>
+          </ul>
+        </p>
+        <div class="card-meta">30 ml · Ref. 45292</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$390.00 MX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ -->
+  <p class="section-label">Maquillaje</p>
+  <!-- ════════════════════════════ -->
+
+  <!-- 14. Base de Maquillaje Eternal Glow FPS 25 -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Giordani Gold</p>
+        <h2 class="product-name">Base de Maquillaje Eternal Glow FPS 25</h2>
+        <div class="divider"></div>
+        <p class="desc">Base de maquillaje líquida profundamente hidratante que proporciona potentes beneficios para el cuidado de la piel y una cobertura radiante. Certificada por la Vegan Society™.
+          <ul>
+            <li>Fórmula con 90% de ácido hialurónico y niacinamida que revitaliza, rellena y alisa la piel</li>
+            <li>Restaura la luminosidad natural de la piel al instante y con el paso del tiempo</li>
+            <li>Hidratación duradera durante 8 horas, clínicamente probada</li>
+          </ul>
+        </p>
+        <div class="card-meta">30 ml · Ref. 43244</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$570.00 MX</div>
+      </div>
+    </div>
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/base-eternal-glow.jpg -->
+      <img src="img/base-eternal-glow.jpg" alt="Base de Maquillaje Eternal Glow FPS 25"/>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ -->
+  <p class="section-label">Fragancias</p>
+  <!-- ════════════════════════════ -->
+
+  <!-- 15. Eclat Mademoiselle Eau de Toilette -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/eclat-mademoiselle.jpg -->
+      <img src="img/eclat-mademoiselle.jpg" alt="Eclat Mademoiselle Eau de Toilette"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Eclat</p>
+        <h2 class="product-name">Eclat Mademoiselle Eau de Toilette</h2>
+        <div class="divider"></div>
+        <p class="desc">Evoca en tu piel una exótica y sublime experiencia, gracias a la delicada esencia de Hibisco blanco y sutiles notas acuáticas que te envolverán en el inigualable romanticismo parisino, el acompañamiento perfecto para la mujer joven.</p>
+        <div class="card-meta">50 ml · Ref. 46217</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$540.00 MX</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. Eau de Toilette Ascendant -->
+  <div class="card reverse">
+    <div class="card-info">
+      <div>
+        <p class="tag">Ascendant</p>
+        <h2 class="product-name">Eau de Toilette Ascendant</h2>
+        <div class="divider"></div>
+        <p class="desc">A la altura de cualquier ocasión con esta eau de toilette masculina y audaz que crea una primera impresión inolvidablemente poderosa.
+          <ul>
+            <li>Notas de salida de cardamomo aromático y bergamota picante</li>
+            <li>Corazón intrigante de hierbas y vainilla suave</li>
+            <li>Base especiada, oriental y masculina</li>
+          </ul>
+        </p>
+        <div class="card-meta">75 ml · Ref. 42490</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">$640.00 MX</div>
+      </div>
+    </div>
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/eau-de-toilette-ascendant.jpg -->
+      <img src="img/eau-de-toilette-ascendant.jpg" alt="Eau de Toilette Ascendant"/>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════ -->
+  <p class="section-label">Sets &amp; regalos</p>
+  <!-- ════════════════════════════ -->
+
+  <!-- 17. Lote Love Potion Cherry on Top -->
+  <div class="card">
+    <div class="card-img">
+      <!-- Reemplaza con tu imagen: img/lote-love-potion.jpg -->
+      <img src="img/lote-love-potion.jpg" alt="Lote Love Potion Cherry on Top"/>
+    </div>
+    <div class="card-info">
+      <div>
+        <p class="tag">Love Potion</p>
+        <h2 class="product-name">Lote Love Potion Cherry on Top</h2>
+        <div class="divider"></div>
+        <p class="desc">¡Regálale el último flechazo de cereza! El set incluye Love Potion Cherry on Top Hand Cream (75 ml) y Love Potion Cherry on Top Eau de Parfum (50 ml), ambos empaquetados en una caja de regalo personalizada.</p>
+        <div class="card-meta">2 uds · Ref. 46083</div>
+      </div>
+      <div class="price-row">
+        <div class="price-arrow">60.50 €</div>
+      </div>
     </div>
   </div>
 
@@ -350,7 +712,7 @@
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <p>Catálogo &nbsp;·&nbsp; Todos los precios en MXN &nbsp;·&nbsp; Sujeto a disponibilidad</p>
+  <p>Catálogo &nbsp;·&nbsp; Todos los precios en MXN salvo indicación contraria &nbsp;·&nbsp; Sujeto a disponibilidad</p>
 </footer>
 
 </body>

@@ -61,6 +61,49 @@
       border-radius: 2px;
     }
 
+    /* ── FILTROS ── */
+    .filters-wrap {
+      background: var(--white);
+      border-bottom: 1px solid #e0d5c5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(60,30,10,.08);
+    }
+    .filters {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+      flex-shrink: 0;
+      border: none;
+      background: transparent;
+      color: var(--brown-mid);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 12px 12px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .filter-btn:hover { color: var(--brown-dark); }
+    .filter-btn.active {
+      color: var(--brown-dark);
+      border-bottom-color: var(--gold);
+    }
+
     /* ── MAIN LAYOUT ── */
     main {
       max-width: 820px;
@@ -71,6 +114,10 @@
       gap: 36px;
     }
 
+    /* ── SECTION GROUP ── */
+    .section-group { display: flex; flex-direction: column; gap: 36px; }
+    .section-group.hidden { display: none; }
+
     /* ── SECTION LABEL ── */
     .section-label {
       font-size: 0.7rem;
@@ -79,7 +126,6 @@
       color: var(--brown-mid);
       border-left: 3px solid var(--gold);
       padding-left: 10px;
-      margin-bottom: -20px;
     }
 
     /* ── CARD ── */
@@ -121,6 +167,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       padding: 5px 10px;
+      z-index: 2;
     }
     .card-img .badge.discount {
       background: var(--gold);
@@ -161,24 +208,14 @@
       color: var(--text-light);
       line-height: 1.7;
     }
-    .card-info .desc ul {
-      margin-top: 8px;
-      padding-left: 18px;
-    }
+    .card-info .desc ul { margin-top: 8px; padding-left: 18px; }
     .card-info .desc ul li { margin-bottom: 3px; }
-    .card-info .note {
-      font-size: 0.78rem;
-      color: var(--brown-mid);
-      font-style: italic;
-      margin-top: 8px;
-    }
     .card-meta {
       margin-top: 10px;
       font-size: 0.78rem;
       color: var(--brown-mid);
       line-height: 1.9;
     }
-    .card-meta strong { color: var(--brown-dark); font-weight: 700; }
 
     /* ── PRICE ARROW ── */
     .price-row {
@@ -230,11 +267,13 @@
       .card, .card.reverse { grid-template-columns: 1fr; }
       .card-img { min-height: 220px; }
       header { flex-direction: column; gap: 12px; text-align: center; }
+      .filter-btn { padding: 12px 10px 10px; font-size: 0.62rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- ══ HEADER ══ -->
 <header>
   <div>
     <h1>Mi Catálogo</h1>
@@ -243,787 +282,797 @@
   <div class="header-badge">Temporada 2026</div>
 </header>
 
+<!-- ══ FILTROS ══ -->
+<div class="filters-wrap">
+  <nav class="filters">
+    <button class="filter-btn active" data-section="all">Todos</button>
+    <button class="filter-btn" data-section="corporal">Cuidado corporal</button>
+    <button class="filter-btn" data-section="facial">Cuidado facial</button>
+    <button class="filter-btn" data-section="tratamientos">Tratamientos &amp; serums</button>
+    <button class="filter-btn" data-section="capilar">Cuidado capilar</button>
+    <button class="filter-btn" data-section="maquillaje">Maquillaje</button>
+    <button class="filter-btn" data-section="fragancias">Fragancias</button>
+    <button class="filter-btn" data-section="masculino">Cuidado masculino</button>
+    <button class="filter-btn" data-section="regalos">Sets &amp; regalos</button>
+  </nav>
+</div>
+
+<!-- ══ MAIN ══ -->
 <main>
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Cuidado corporal</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ CUIDADO CORPORAL ════════════════════════════ -->
+  <div class="section-group" data-group="corporal">
+    <p class="section-label">Cuidado corporal</p>
 
-  <!-- 01 · Exfoliante Corporal Suavizante -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44370%2F44370_1.png&MediaId=17029025&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Exfoliante Corporal Suavizante"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Oriflame · Optimals</p>
-        <h2 class="product-name">Exfoliante Corporal Suavizante</h2>
-        <div class="divider"></div>
-        <p class="desc">Exfoliante corporal que ayuda a estimular la renovación cutánea, revitaliza y deja la piel suave y flexible. Contiene exfoliantes de origen natural combinados con ácido glicólico (AHA).
-          <ul>
-            <li>Revitaliza y exfolia la piel.</li>
-            <li>Ayuda a estimular la renovación de la piel.</li>
-            <li>Deja la piel suave y flexible.</li>
-          </ul>
-        </p>
+    <!-- 01 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F44370%2F44370_1.png&MediaId=17029025&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Exfoliante Corporal Suavizante"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$280.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Oriflame · Optimals</p>
+          <h2 class="product-name">Exfoliante Corporal Suavizante</h2>
+          <div class="divider"></div>
+          <p class="desc">Exfoliante corporal que ayuda a estimular la renovación cutánea, revitaliza y deja la piel suave y flexible. Contiene exfoliantes de origen natural combinados con ácido glicólico (AHA).
+            <ul>
+              <li>Revitaliza y exfolia la piel.</li>
+              <li>Ayuda a estimular la renovación de la piel.</li>
+              <li>Deja la piel suave y flexible.</li>
+            </ul>
+          </p>
+        </div>
+        <div class="price-row"><div class="price-arrow">$280.00 MX</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- 02 · Exfoliante Corporal de Azúcar Milk & Honey Gold -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Oriflame · Milk &amp; Honey Gold</p>
-        <h2 class="product-name">Exfoliante Corporal de Azúcar Milk &amp; Honey Gold</h2>
-        <div class="divider"></div>
-        <p class="desc">Lujoso exfoliante corporal con extractos orgánicos de leche y miel, y exfoliantes de origen natural. Exfolia suavemente las células muertas y ayuda a acondicionar la piel para dejarla tersa, suave, flexible y exquisitamente perfumada.
-          <ul>
-            <li>La leche y la miel hidratan y nutren la piel</li>
-            <li>Textura suave y apta para el uso diario</li>
-            <li>Dermatológicamente probado</li>
-          </ul>
-        </p>
+    <!-- 02 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Oriflame · Milk &amp; Honey Gold</p>
+          <h2 class="product-name">Exfoliante Corporal de Azúcar Milk &amp; Honey Gold</h2>
+          <div class="divider"></div>
+          <p class="desc">Lujoso exfoliante corporal con extractos orgánicos de leche y miel, y exfoliantes de origen natural. Exfolia suavemente las células muertas y ayuda a acondicionar la piel para dejarla tersa, suave, flexible y exquisitamente perfumada.
+            <ul>
+              <li>La leche y la miel hidratan y nutren la piel</li>
+              <li>Textura suave y apta para el uso diario</li>
+              <li>Dermatológicamente probado</li>
+            </ul>
+          </p>
+        </div>
+        <div class="price-row"><div class="price-arrow">$200 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$200 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46969%2F46969_1.png&MediaId=19554576&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Exfoliante Corporal de Azúcar"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46969%2F46969_1.png&MediaId=19554576&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Exfoliante Corporal de Azúcar"/>
-    </div>
-  </div>
 
-  <!-- 03 · Crema de Ducha Milk & Honey Gold -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46970%2F46970_2.png&MediaId=19554577&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema de Ducha Milk & Honey Gold"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Milk &amp; Honey Gold</p>
-        <h2 class="product-name">Crema de Ducha Milk &amp; Honey Gold</h2>
-        <div class="divider"></div>
-        <p class="desc">Esta indulgente y espumosa crema de ducha está enriquecida con extractos orgánicos de leche y miel. Hidrata y nutre para dejar la piel deliciosamente suave, tersa, limpia y perfumada.
-          <ul>
-            <li>La leche y la miel hidratan y nutren la piel</li>
-            <li>Con glicerina hidratante</li>
-            <li>Dermatológicamente probado</li>
-          </ul>
-        </p>
-        <div class="card-meta">250 ml · Ref. 46970</div>
+    <!-- 03 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46970%2F46970_2.png&MediaId=19554577&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema de Ducha Milk & Honey Gold"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$149.90 MX</div>
-        <span class="price-old">$260.00</span>
+      <div class="card-info">
+        <div>
+          <p class="tag">Milk &amp; Honey Gold</p>
+          <h2 class="product-name">Crema de Ducha Milk &amp; Honey Gold</h2>
+          <div class="divider"></div>
+          <p class="desc">Esta indulgente y espumosa crema de ducha está enriquecida con extractos orgánicos de leche y miel. Hidrata y nutre para dejar la piel deliciosamente suave, tersa, limpia y perfumada.
+            <ul>
+              <li>La leche y la miel hidratan y nutren la piel</li>
+              <li>Con glicerina hidratante</li>
+              <li>Dermatológicamente probado</li>
+            </ul>
+          </p>
+          <div class="card-meta">250 ml · Ref. 46970</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$149.90 MX</div>
+          <span class="price-old">$260.00</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 04 · Jabón en Barra Milk & Honey Gold  ★ NUEVO -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Milk &amp; Honey Gold</p>
-        <h2 class="product-name">Jabón en Barra Milk &amp; Honey Gold</h2>
-        <div class="divider"></div>
-        <p class="desc">Esta pastilla de jabón ultra cremosa está enriquecida con extractos orgánicos de leche y miel. Limpia sin resecar para dejar la piel suave, tersa y delicadamente perfumada.
-          <ul>
-            <li>La leche y la miel hidratan y nutren la piel</li>
-            <li>Con glicerina hidratante añadida</li>
-            <li>Dermatológicamente probado</li>
-          </ul>
-        </p>
-        <div class="card-meta">90 g · Ref. 46971</div>
+    <!-- 04 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Milk &amp; Honey Gold</p>
+          <h2 class="product-name">Jabón en Barra Milk &amp; Honey Gold</h2>
+          <div class="divider"></div>
+          <p class="desc">Esta pastilla de jabón ultra cremosa está enriquecida con extractos orgánicos de leche y miel. Limpia sin resecar para dejar la piel suave, tersa y delicadamente perfumada.
+            <ul>
+              <li>La leche y la miel hidratan y nutren la piel</li>
+              <li>Con glicerina hidratante añadida</li>
+              <li>Dermatológicamente probado</li>
+            </ul>
+          </p>
+          <div class="card-meta">90 g · Ref. 46971</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$69.90 MX</div>
+          <span class="price-old">$130.00</span>
+        </div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$69.90 MX</div>
-        <span class="price-old">$130.00</span>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46971%2F46971_4.png&MediaId=19669447&Version=4&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Jabón en Barra Milk & Honey Gold"/>
       </div>
     </div>
-    <div class="card-img">
-      <!-- img/jabon-barra-milk-honey.jpg -->
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46971%2F46971_4.png&MediaId=19669447&Version=4&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Jabón en Barra Milk & Honey Gold"/>
-    </div>
-  </div>
 
-  <!-- 05 · Crema Nutritiva para Manos y Cuerpo Milk & Honey Gold -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46968%2F46968_1.png&MediaId=19554510&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Nutritiva Manos y Cuerpo"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Milk &amp; Honey Gold</p>
-        <h2 class="product-name">Crema Nutritiva para Manos y Cuerpo Milk &amp; Honey Gold</h2>
-        <div class="divider"></div>
-        <p class="desc">Esta crema para manos y cuerpo, rica y mimosa, delicadamente perfumada, está formulada con deliciosos extractos orgánicos de leche y miel. Hidrata y nutre intensamente para conseguir una piel suave, tersa y luminosa.
-          <ul>
-            <li>48h de hidratación intensa</li>
-            <li>Incrementa la humectación de la piel en un 59%</li>
-            <li>Dermatológicamente probado</li>
-          </ul>
-        </p>
-        <div class="card-meta">250 ml · Ref. 46968</div>
+    <!-- 05 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46968%2F46968_1.png&MediaId=19554510&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Nutritiva Manos y Cuerpo"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$300.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Milk &amp; Honey Gold</p>
+          <h2 class="product-name">Crema Nutritiva para Manos y Cuerpo Milk &amp; Honey Gold</h2>
+          <div class="divider"></div>
+          <p class="desc">Esta crema para manos y cuerpo, rica y mimosa, delicadamente perfumada, está formulada con deliciosos extractos orgánicos de leche y miel. Hidrata y nutre intensamente para conseguir una piel suave, tersa y luminosa.
+            <ul>
+              <li>48h de hidratación intensa</li>
+              <li>Incrementa la humectación de la piel en un 59%</li>
+              <li>Dermatológicamente probado</li>
+            </ul>
+          </p>
+          <div class="card-meta">250 ml · Ref. 46968</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$300.00 MX</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- 06 · Crema para Manos Hidratante Milk & Honey Gold -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Milk &amp; Honey Gold</p>
-        <h2 class="product-name">Crema para Manos Hidratante Milk &amp; Honey Gold</h2>
-        <div class="divider"></div>
-        <p class="desc">Esta rica crema de manos está enriquecida con extractos orgánicos de leche y miel, y glicerina añadida. Su fórmula no grasa se absorbe fácilmente y deja la piel perfumada, suave y nutrida durante todo el día.
-          <ul>
-            <li>Hidratación 24 horas</li>
-            <li>La leche y la miel hidratan y nutren la piel</li>
-            <li>Dermatológicamente probado</li>
-          </ul>
-        </p>
-        <div class="card-meta">75 ml · Ref. 47224</div>
+    <!-- 06 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Milk &amp; Honey Gold</p>
+          <h2 class="product-name">Crema para Manos Hidratante Milk &amp; Honey Gold</h2>
+          <div class="divider"></div>
+          <p class="desc">Esta rica crema de manos está enriquecida con extractos orgánicos de leche y miel, y glicerina añadida. Su fórmula no grasa se absorbe fácilmente y deja la piel perfumada, suave y nutrida durante todo el día.
+            <ul>
+              <li>Hidratación 24 horas</li>
+              <li>La leche y la miel hidratan y nutren la piel</li>
+              <li>Dermatológicamente probado</li>
+            </ul>
+          </p>
+          <div class="card-meta">75 ml · Ref. 47224</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$89.90 MX</div>
+          <span class="price-old">$170.00</span>
+        </div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$89.90 MX</div>
-        <span class="price-old">$170.00</span>
+      <div class="card-img">
+        <div class="badge discount">−47%</div>
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47224%2F47224_2.png&MediaId=19661263&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema para Manos Hidratante"/>
       </div>
     </div>
-    <div class="card-img">
-      <div class="badge discount">−47%</div>
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47224%2F47224_2.png&MediaId=19661263&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema para Manos Hidratante"/>
-    </div>
-  </div>
 
-  <!-- 07 · Gel de Ducha con Mango Orgánico Love Nature  ★ NUEVO -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46987%2F46987_3.png&MediaId=20192058&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel de Ducha con Mango Love Nature"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Love Nature</p>
-        <h2 class="product-name">Gel de Ducha con Mango Orgánico Simple Joys Love Nature</h2>
-        <div class="divider"></div>
-        <p class="desc">Disfrute de un toque de frescor tropical con nuestro gel de ducha de mango, que ofrece una espuma cremosa y un aroma dulce para una experiencia de ducha refrescante.
-          <ul>
-            <li>Sensación deliciosa y jugosa</li>
-            <li>Formulado para ser biodegradable</li>
-            <li>PH equilibrado y dermatológicamente probado</li>
-          </ul>
-        </p>
-        <div class="card-meta">250 ml · Ref. 46987</div>
+    <!-- 07 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46987%2F46987_3.png&MediaId=20192058&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel de Ducha con Mango Love Nature"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$135.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Love Nature</p>
+          <h2 class="product-name">Gel de Ducha con Mango Orgánico Simple Joys Love Nature</h2>
+          <div class="divider"></div>
+          <p class="desc">Disfrute de un toque de frescor tropical con nuestro gel de ducha de mango, que ofrece una espuma cremosa y un aroma dulce para una experiencia de ducha refrescante.
+            <ul>
+              <li>Sensación deliciosa y jugosa</li>
+              <li>Formulado para ser biodegradable</li>
+              <li>PH equilibrado y dermatológicamente probado</li>
+            </ul>
+          </p>
+          <div class="card-meta">250 ml · Ref. 46987</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$135.00 MX</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- 08 · Crema Nutritiva Corporal Manteca de Cacao Love Nature JUMBO  ★ NUEVO -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Love Nature</p>
-        <h2 class="product-name">Crema Nutritiva Corporal con Manteca de Cacao y Aceite de Coco Orgánicos Love Nature</h2>
-        <div class="divider"></div>
-        <p class="desc">Crema corporal nutritiva enriquecida con manteca de cacao y aceite de coco orgánicos. Hidrata y nutre profundamente la piel dejándola suave y flexible. Tamaño Jumbo para uso prolongado.</p>
-        <div class="card-meta">750 ml · Ref. 41490</div>
+    <!-- 08 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Love Nature</p>
+          <h2 class="product-name">Crema Nutritiva Corporal con Manteca de Cacao y Aceite de Coco Orgánicos Love Nature</h2>
+          <div class="divider"></div>
+          <p class="desc">Crema corporal nutritiva enriquecida con manteca de cacao y aceite de coco orgánicos. Hidrata y nutre profundamente la piel dejándola suave y flexible. Tamaño Jumbo para uso prolongado.</p>
+          <div class="card-meta">750 ml · Ref. 41490</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$249.90 MX</div>
+          <span class="price-old">$450.00</span>
+        </div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$249.90 MX</div>
-        <span class="price-old">$450.00</span>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41490%2F41490_5.png&MediaId=15832919&Version=6&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Nutritiva Corporal Love Nature"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41490%2F41490_5.png&MediaId=15832919&Version=6&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Nutritiva Corporal Love Nature"/>
-    </div>
-  </div>
 
-  <!-- 09 · Jabón en Barra Exfoliante Menta y Frambuesa Love Nature  ★ NUEVO -->
-  <div class="card">
-    <div class="card-img">
-      <div class="badge discount">−38%</div>
-      <!-- img/jabon-exfoliante-menta-frambuesa.jpg -->
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41277%2F41277_5.png&MediaId=15832914&Version=5&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Jabón Exfoliante Menta y Frambuesa Love Nature"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Love Nature</p>
-        <h2 class="product-name">Jabón en Barra Exfoliante Energizante con Menta y Frambuesa Orgánicas Love Nature</h2>
-        <div class="divider"></div>
-        <p class="desc">Jabón en barra exfoliante y energizante con menta y frambuesa orgánicas. Limpia y exfolia la piel dejándola suave, tersa y con un delicioso aroma refrescante.</p>
-        <div class="card-meta">75 g · Ref. 41277</div>
+    <!-- 09 -->
+    <div class="card">
+      <div class="card-img">
+        <div class="badge discount">−38%</div>
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41277%2F41277_5.png&MediaId=15832914&Version=5&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Jabón Exfoliante Menta y Frambuesa"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$49.90 MX</div>
-        <span class="price-old">$80.00</span>
+      <div class="card-info">
+        <div>
+          <p class="tag">Love Nature</p>
+          <h2 class="product-name">Jabón en Barra Exfoliante Energizante con Menta y Frambuesa Orgánicas Love Nature</h2>
+          <div class="divider"></div>
+          <p class="desc">Jabón en barra exfoliante y energizante con menta y frambuesa orgánicas. Limpia y exfolia la piel dejándola suave, tersa y con un delicioso aroma refrescante.</p>
+          <div class="card-meta">75 g · Ref. 41277</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$49.90 MX</div>
+          <span class="price-old">$80.00</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 10 · Spray Antitranspirante para Pies Feet Up Expert  ★ NUEVO -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Feet Up</p>
-        <h2 class="product-name">Spray Antitranspirante para Pies Control de Olores 48h Feet Up Expert</h2>
-        <div class="divider"></div>
-        <p class="desc">Manténgase fresco y seco durante 48H con este spray antitranspirante para pies, diseñado para combatir el sudor y el olor mientras mantiene sus pies cómodos.
-          <ul>
-            <li>Control del olor clínicamente probado durante 48 horas</li>
-            <li>Proporciona una sensación de frescor instantánea en la piel</li>
-            <li>Efecto de secado rápido</li>
-          </ul>
-        </p>
-        <div class="card-meta">150 ml · Ref. 46982</div>
+    <!-- 10 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Feet Up</p>
+          <h2 class="product-name">Spray Antitranspirante para Pies Control de Olores 48h Feet Up Expert</h2>
+          <div class="divider"></div>
+          <p class="desc">Manténgase fresco y seco durante 48H con este spray antitranspirante para pies, diseñado para combatir el sudor y el olor mientras mantiene sus pies cómodos.
+            <ul>
+              <li>Control del olor clínicamente probado durante 48 horas</li>
+              <li>Proporciona una sensación de frescor instantánea en la piel</li>
+              <li>Efecto de secado rápido</li>
+            </ul>
+          </p>
+          <div class="card-meta">150 ml · Ref. 46982</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$340.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$340.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46982%2F46982_2.png&MediaId=19977002&Version=5&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Spray Antitranspirante Feet Up Expert"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46982%2F46982_2.png&MediaId=19977002&Version=5&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Spray Antitranspirante Feet Up Expert"/>
-    </div>
-  </div>
 
-  <!-- 11 · Aceite Nutritivo Aguacate Love Nature  ★ NUEVO -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41283%2F41283_4.png&MediaId=16167504&Version=4&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Aceite Nutritivo Aguacate Love Nature"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Love Nature</p>
-        <h2 class="product-name">Aceite Nutritivo para Cuerpo, Rostro y Cabello con Aceite de Aguacate Orgánico Love Nature</h2>
-        <div class="divider"></div>
-        <p class="desc">Aceite multiusos nutritivo con aceite de aguacate orgánico para cuerpo, rostro y cabello. Nutre e hidrata en profundidad dejando la piel y el cabello suaves y luminosos.</p>
-        <div class="card-meta">100 ml · Ref. 41263</div>
+    <!-- 11 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41283%2F41283_4.png&MediaId=16167504&Version=4&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Aceite Nutritivo Aguacate Love Nature"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$250.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Love Nature</p>
+          <h2 class="product-name">Aceite Nutritivo para Cuerpo, Rostro y Cabello con Aceite de Aguacate Orgánico Love Nature</h2>
+          <div class="divider"></div>
+          <p class="desc">Aceite multiusos nutritivo con aceite de aguacate orgánico para cuerpo, rostro y cabello. Nutre e hidrata en profundidad dejando la piel y el cabello suaves y luminosos.</p>
+          <div class="card-meta">100 ml · Ref. 41263</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$250.00 MX</div></div>
       </div>
     </div>
-  </div>
+  </div><!-- /corporal -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Cuidado facial</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ CUIDADO FACIAL ════════════════════════════ -->
+  <div class="section-group" data-group="facial">
+    <p class="section-label">Cuidado facial</p>
 
-  <!-- 12 · Limpiador Cremoso Optimals -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Optimals</p>
-        <h2 class="product-name">Limpiador Cremoso Optimals</h2>
-        <div class="divider"></div>
-        <p class="desc">Este limpiador suave y cremoso está diseñado para pieles secas. Está formulado con un complejo lipídico que elimina eficazmente el maquillaje, el exceso de grasa y las impurezas sin restar hidratación a la piel.
-          <ul>
-            <li>Limpia eficazmente sin deshidratar la piel</li>
-            <li>La piel está más suave desde el primer lavado</li>
-            <li>Preserva los niveles de hidratación de la piel</li>
-          </ul>
-        </p>
-        <div class="card-meta">150 ml · Ref. 46900</div>
+    <!-- 12 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Optimals</p>
+          <h2 class="product-name">Limpiador Cremoso Optimals</h2>
+          <div class="divider"></div>
+          <p class="desc">Este limpiador suave y cremoso está diseñado para pieles secas. Está formulado con un complejo lipídico que elimina eficazmente el maquillaje, el exceso de grasa y las impurezas sin restar hidratación a la piel.
+            <ul>
+              <li>Limpia eficazmente sin deshidratar la piel</li>
+              <li>La piel está más suave desde el primer lavado</li>
+              <li>Preserva los niveles de hidratación de la piel</li>
+            </ul>
+          </p>
+          <div class="card-meta">150 ml · Ref. 46900</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$199.90 MX</div>
+          <span class="price-old">$260.00</span>
+        </div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$199.90 MX</div>
-        <span class="price-old">$260.00</span>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46900%2F46900_1.png&MediaId=19904759&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Limpiador Cremoso Optimals"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46900%2F46900_1.png&MediaId=19904759&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Limpiador Cremoso Optimals"/>
-    </div>
-  </div>
 
-  <!-- 13 · Limpiador Refrescante en Gel Novage+ -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41029%2F41029_3.png&MediaId=17448906&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Limpiador Refrescante en Gel Novage+"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Novage+</p>
-        <h2 class="product-name">Limpiador Refrescante en Gel</h2>
-        <div class="divider"></div>
-        <p class="desc">Limpiador refrescante en gel que mantiene la barrera de protección e hidratación de la piel. Se transforma en suave espuma cuando se combina con agua. Formulado para eliminar el maquillaje, contaminantes y Filtro Solar.
-          <ul>
-            <li>Delicada y eficaz limpieza que no daña la piel</li>
-            <li>Preserva los lípidos naturales de la piel</li>
-            <li>Adecuado para todo tipo de piel, incluso piel sensible</li>
-          </ul>
-        </p>
-        <div class="card-meta">150 ml · Ref. 41029</div>
+    <!-- 13 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41029%2F41029_3.png&MediaId=17448906&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Limpiador Refrescante en Gel Novage+"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$489.90 MX</div>
-        <span class="price-old">$560.00</span>
+      <div class="card-info">
+        <div>
+          <p class="tag">Novage+</p>
+          <h2 class="product-name">Limpiador Refrescante en Gel</h2>
+          <div class="divider"></div>
+          <p class="desc">Limpiador refrescante en gel que mantiene la barrera de protección e hidratación de la piel. Se transforma en suave espuma cuando se combina con agua. Formulado para eliminar el maquillaje, contaminantes y Filtro Solar.
+            <ul>
+              <li>Delicada y eficaz limpieza que no daña la piel</li>
+              <li>Preserva los lípidos naturales de la piel</li>
+              <li>Adecuado para todo tipo de piel, incluso piel sensible</li>
+            </ul>
+          </p>
+          <div class="card-meta">150 ml · Ref. 41029</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$489.90 MX</div>
+          <span class="price-old">$560.00</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 14 · Tónico Purificante Pure Skin -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Pure Skin</p>
-        <h2 class="product-name">Tónico Purificante Pure Skin</h2>
-        <div class="divider"></div>
-        <p class="desc">Tónico purificante de acción profunda con BHA y PHA ácidos para equilibrar la piel con tendencia grasa, controlar el exceso de sebo y afinar los poros visiblemente.</p>
-        <div class="card-meta">150 ml · Ref. 41672</div>
+    <!-- 14 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Pure Skin</p>
+          <h2 class="product-name">Tónico Purificante Pure Skin</h2>
+          <div class="divider"></div>
+          <p class="desc">Tónico purificante de acción profunda con BHA y PHA ácidos para equilibrar la piel con tendencia grasa, controlar el exceso de sebo y afinar los poros visiblemente.</p>
+          <div class="card-meta">150 ml · Ref. 41672</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$260.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$260.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41672%2F41672_4.png&MediaId=15037596&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Tónico Purificante Pure Skin"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41672%2F41672_4.png&MediaId=15037596&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Tónico Purificante Pure Skin"/>
-    </div>
-  </div>
 
-  <!-- 15 · Gel Facial SOS Antimperfecciones Pure Skin -->
-  <div class="card">
-    <div class="card-img">
-      <div class="badge discount">−32%</div>
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41676%2F41676_3.png&MediaId=15037679&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel SOS Pure Skin"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Pure Skin</p>
-        <h2 class="product-name">Gel Facial SOS Antimperfecciones Pure Skin</h2>
-        <div class="divider"></div>
-        <p class="desc">Gel antimanchas de acción rápida que reduce el tamaño de las imperfecciones y el enrojecimiento en 8 horas y evita que los puntos negros empeoren en 24 horas.
-          <ul>
-            <li>Reduce las imperfecciones hasta un 40% en 24 horas</li>
-            <li>Evita que las manchas empeoren en 24 horas</li>
-            <li>Reduce el tamaño de las manchas y el enrojecimiento en 8 horas</li>
-          </ul>
-        </p>
-        <div class="card-meta">6 ml · Ref. 41676</div>
+    <!-- 15 -->
+    <div class="card">
+      <div class="card-img">
+        <div class="badge discount">−32%</div>
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41676%2F41676_3.png&MediaId=15037679&Version=3&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel SOS Pure Skin"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$149.90 MX</div>
-        <span class="price-old">$220.00</span>
+      <div class="card-info">
+        <div>
+          <p class="tag">Pure Skin</p>
+          <h2 class="product-name">Gel Facial SOS Antimperfecciones Pure Skin</h2>
+          <div class="divider"></div>
+          <p class="desc">Gel antimanchas de acción rápida que reduce el tamaño de las imperfecciones y el enrojecimiento en 8 horas y evita que los puntos negros empeoren en 24 horas.
+            <ul>
+              <li>Reduce las imperfecciones hasta un 40% en 24 horas</li>
+              <li>Evita que las manchas empeoren en 24 horas</li>
+              <li>Reduce el tamaño de las manchas y el enrojecimiento en 8 horas</li>
+            </ul>
+          </p>
+          <div class="card-meta">6 ml · Ref. 41676</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$149.90 MX</div>
+          <span class="price-old">$220.00</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 16 · Crema Facial Hidratante Love Nature -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Love Nature</p>
-        <h2 class="product-name">Crema Facial Hidratante con Aloe Vera y Piña Orgánicos</h2>
-        <div class="divider"></div>
-        <p class="desc">Crema facial hidratante con Aloe Vera y extracto de piña orgánica que hidrata la piel en profundidad para un aspecto saludable.
-          <ul>
-            <li>Ayuda a mantener una piel sana y luminosa</li>
-            <li>Hidrata intensamente para que la piel esté tersa y suave</li>
-            <li>Deja la piel fresca e hidratada sin sensación pegajosa</li>
-          </ul>
-        </p>
-        <div class="card-meta">50 ml · Ref. 46071</div>
+    <!-- 16 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Love Nature</p>
+          <h2 class="product-name">Crema Facial Hidratante con Aloe Vera y Piña Orgánicos</h2>
+          <div class="divider"></div>
+          <p class="desc">Crema facial hidratante con Aloe Vera y extracto de piña orgánica que hidrata la piel en profundidad para un aspecto saludable.
+            <ul>
+              <li>Ayuda a mantener una piel sana y luminosa</li>
+              <li>Hidrata intensamente para que la piel esté tersa y suave</li>
+              <li>Deja la piel fresca e hidratada sin sensación pegajosa</li>
+            </ul>
+          </p>
+          <div class="card-meta">50 ml · Ref. 46071</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$99.90 MX</div>
+          <span class="price-old">$200.00</span>
+        </div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$99.90 MX</div>
-        <span class="price-old">$200.00</span>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46071%2F46071_4.png&MediaId=18866137&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Facial Love Nature"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46071%2F46071_4.png&MediaId=18866137&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Facial Love Nature"/>
-    </div>
-  </div>
 
-  <!-- 17 · Crema de Día Waunt -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41365%2F41365_1.png&MediaId=15968627&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema de Día Waunt"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Waunt</p>
-        <h2 class="product-name">Crema de Día</h2>
-        <div class="divider"></div>
-        <p class="desc">Crema de día aterciopelada con una textura esponjosa y batida que se funde con la piel y cubre al instante los tonos rojizos. Suaviza y calma la piel a la vez que la hidrata durante 24 horas. Cuidado de la piel vegano.
-          <ul>
-            <li>Efecto imprimación que difumina al instante los tonos rojos de la piel</li>
-            <li>Alivia y calma la piel</li>
-            <li>Repone e hidrata incluso la piel seca durante 24 horas</li>
-          </ul>
-        </p>
-        <div class="card-meta">50 ml · Ref. 41365</div>
+    <!-- 17 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F41365%2F41365_1.png&MediaId=15968627&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema de Día Waunt"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$560.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Waunt</p>
+          <h2 class="product-name">Crema de Día</h2>
+          <div class="divider"></div>
+          <p class="desc">Crema de día aterciopelada con una textura esponjosa y batida que se funde con la piel y cubre al instante los tonos rojizos. Suaviza y calma la piel a la vez que la hidrata durante 24 horas. Cuidado de la piel vegano.
+            <ul>
+              <li>Efecto imprimación que difumina al instante los tonos rojos de la piel</li>
+              <li>Alivia y calma la piel</li>
+              <li>Repone e hidrata incluso la piel seca durante 24 horas</li>
+            </ul>
+          </p>
+          <div class="card-meta">50 ml · Ref. 41365</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$560.00 MX</div></div>
       </div>
     </div>
-  </div>
+  </div><!-- /facial -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Tratamientos &amp; serums</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ TRATAMIENTOS ════════════════════════════ -->
+  <div class="section-group" data-group="tratamientos">
+    <p class="section-label">Tratamientos &amp; serums</p>
 
-  <!-- 18 · Suero Antimanchas Even Out Optimals -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Optimals</p>
-        <h2 class="product-name">Suero Antimanchas Even Out Optimals</h2>
-        <div class="divider"></div>
-        <p class="desc">Este suero ayuda a combatir la hiperpigmentación y a potenciar la renovación celular superficial, para reducir visiblemente la opacidad y mejorar la textura de la piel.
-          <ul>
-            <li>La piel luce resplandeciente desde el primer uso</li>
-            <li>Con extracto de algas arco iris, niacinamida y ácido glicólico</li>
-            <li>Ideal para todo tipo de pieles, incluidas las sensibles</li>
-          </ul>
-        </p>
-        <div class="card-meta">30 ml · Ref. 45248</div>
+    <!-- 18 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Optimals</p>
+          <h2 class="product-name">Suero Antimanchas Even Out Optimals</h2>
+          <div class="divider"></div>
+          <p class="desc">Este suero ayuda a combatir la hiperpigmentación y a potenciar la renovación celular superficial, para reducir visiblemente la opacidad y mejorar la textura de la piel.
+            <ul>
+              <li>La piel luce resplandeciente desde el primer uso</li>
+              <li>Con extracto de algas arco iris, niacinamida y ácido glicólico</li>
+              <li>Ideal para todo tipo de pieles, incluidas las sensibles</li>
+            </ul>
+          </p>
+          <div class="card-meta">30 ml · Ref. 45248</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$510.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$510.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F45248%2F45248_1.png&MediaId=20200753&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Suero Antimanchas Even Out Optimals"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F45248%2F45248_1.png&MediaId=20200753&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Suero Antimanchas Even Out Optimals"/>
-    </div>
-  </div>
 
-  <!-- 19 · Crema Ligera Antimanchas Even Out Optimals -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F45243%2F45243_1.png&MediaId=20200741&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Ligera Antimanchas Even Out Optimals"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Optimals</p>
-        <h2 class="product-name">Crema Ligera Antimanchas Even Out Optimals</h2>
-        <div class="divider"></div>
-        <p class="desc">Esta crema hidratante ligera y sin aceites ayuda a combatir la hiperpigmentación, hidrata y favorece la salud y la función de la barrera cutánea para conseguir una piel radiante y luminosa.
-          <ul>
-            <li>Ayuda a difuminar y prevenir las manchas oscuras</li>
-            <li>No comedogénico. Ideal para pieles grasas</li>
-            <li>Con extracto de algas arco iris, niacinamida y paraprobiótico</li>
-          </ul>
-        </p>
-        <div class="card-meta">50 ml · Ref. 45243</div>
+    <!-- 19 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F45243%2F45243_1.png&MediaId=20200741&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Crema Ligera Antimanchas Even Out Optimals"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$400.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Optimals</p>
+          <h2 class="product-name">Crema Ligera Antimanchas Even Out Optimals</h2>
+          <div class="divider"></div>
+          <p class="desc">Esta crema hidratante ligera y sin aceites ayuda a combatir la hiperpigmentación, hidrata y favorece la salud y la función de la barrera cutánea para conseguir una piel radiante y luminosa.
+            <ul>
+              <li>Ayuda a difuminar y prevenir las manchas oscuras</li>
+              <li>No comedogénico. Ideal para pieles grasas</li>
+              <li>Con extracto de algas arco iris, niacinamida y paraprobiótico</li>
+            </ul>
+          </p>
+          <div class="card-meta">50 ml · Ref. 45243</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$400.00 MX</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- 20 · Muestra Gel-Sérum Wellosophy -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Wellosophy</p>
-        <h2 class="product-name">Muestra Gel-Sérum Suavizante y Equilibrante Wellosophy</h2>
-        <div class="divider"></div>
-        <p class="desc">Gel-sérum suavizante y equilibrante. Muestra de producto para conocer su textura ligera y su fórmula diseñada para equilibrar y suavizar la piel con uso diario.</p>
+    <!-- 20 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Wellosophy</p>
+          <h2 class="product-name">Muestra Gel-Sérum Suavizante y Equilibrante Wellosophy</h2>
+          <div class="divider"></div>
+          <p class="desc">Gel-sérum suavizante y equilibrante. Muestra de producto para conocer su textura ligera y su fórmula diseñada para equilibrar y suavizar la piel con uso diario.</p>
+        </div>
+        <div class="price-row"><div class="price-arrow">$12.90 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$12.90 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46107%2F46107_1.png&MediaId=19387770&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel-Sérum Wellosophy"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46107%2F46107_1.png&MediaId=19387770&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Gel-Sérum Wellosophy"/>
-    </div>
-  </div>
 
-  <!-- 21 · Peeling AHA Proceuticals Novage+ -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47104%2F47104_2.png&MediaId=19184209&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Peeling AHA Novage+"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Novage+</p>
-        <h2 class="product-name">Peeling AHA Proceuticals Novage+</h2>
-        <div class="divider"></div>
-        <p class="desc">Peeling facial con un 6% de AHA para revitalizar la suavidad y el brillo de la piel, con una combinación de ácido glicólico y ácido láctico, junto con pantenol calmante. Exfolia las células muertas y revela las células más jóvenes.
-          <ul>
-            <li>92% afirma que disminuye la apariencia de poros abiertos</li>
-            <li>91% afirma que la piel luce más fresca</li>
-            <li>89% afirma que suaviza la textura de la piel</li>
-          </ul>
-        </p>
-        <div class="card-meta">30 ml · Ref. 47104</div>
+    <!-- 21 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47104%2F47104_2.png&MediaId=19184209&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Peeling AHA Novage+"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$619.90 MX</div>
-        <span class="price-old">$750.00</span>
+      <div class="card-info">
+        <div>
+          <p class="tag">Novage+</p>
+          <h2 class="product-name">Peeling AHA Proceuticals Novage+</h2>
+          <div class="divider"></div>
+          <p class="desc">Peeling facial con un 6% de AHA para revitalizar la suavidad y el brillo de la piel, con una combinación de ácido glicólico y ácido láctico, junto con pantenol calmante. Exfolia las células muertas y revela las células más jóvenes.
+            <ul>
+              <li>92% afirma que disminuye la apariencia de poros abiertos</li>
+              <li>91% afirma que la piel luce más fresca</li>
+              <li>89% afirma que suaviza la textura de la piel</li>
+            </ul>
+          </p>
+          <div class="card-meta">30 ml · Ref. 47104</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$619.90 MX</div>
+          <span class="price-old">$750.00</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- 22 · Multiprotector Solar FPS 50 Optimals -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Optimals</p>
-        <h2 class="product-name">Multiprotector Solar Uso Diario FPS 50 Optimals</h2>
-        <div class="divider"></div>
-        <p class="desc">Este protector facial ligero y sin aceite protege la piel de los rayos UVA y UVB y la contaminación, refuerza las defensas antioxidantes y reduce la opacidad para una tez radiante. Se absorbe sin dejar residuo blanco.
-          <ul>
-            <li>Protege contra los rayos UVA, UVB y la contaminación</li>
-            <li>Protección UVA FPS 50+</li>
-            <li>Reduce la opacidad</li>
-          </ul>
-        </p>
-        <div class="card-meta">30 ml · Ref. 45292</div>
+    <!-- 22 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Optimals</p>
+          <h2 class="product-name">Multiprotector Solar Uso Diario FPS 50 Optimals</h2>
+          <div class="divider"></div>
+          <p class="desc">Este protector facial ligero y sin aceite protege la piel de los rayos UVA y UVB y la contaminación, refuerza las defensas antioxidantes y reduce la opacidad para una tez radiante. Se absorbe sin dejar residuo blanco.
+            <ul>
+              <li>Protege contra los rayos UVA, UVB y la contaminación</li>
+              <li>Protección UVA FPS 50+</li>
+              <li>Reduce la opacidad</li>
+            </ul>
+          </p>
+          <div class="card-meta">30 ml · Ref. 45292</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$390.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$390.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F45292%2F45292_2.png&MediaId=19904728&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Multiprotector Solar FPS 50"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F45292%2F45292_2.png&MediaId=19904728&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Multiprotector Solar FPS 50"/>
-    </div>
-  </div>
+  </div><!-- /tratamientos -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Cuidado capilar</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ CAPILAR ════════════════════════════ -->
+  <div class="section-group" data-group="capilar">
+    <p class="section-label">Cuidado capilar</p>
 
-  <!-- 23 · Shampoo Definidor de Rizos DUOLOGI  ★ NUEVO -->
-  <div class="card">
-    <div class="card-img">
-      <div class="badge discount">−44%</div>
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46622%2F46622_1.png&MediaId=19714947&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Shampoo Definidor de Rizos DUOLOGI"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Duologi</p>
-        <h2 class="product-name">Shampoo Definidor de Rizos DUOLOGI</h2>
-        <div class="divider"></div>
-        <p class="desc">Shampoo nutritivo que ayuda a definir los rizos, limpia suavemente y nutre el cabello con ingredientes para el cuidado de la piel. Óptimo para cabellos ondulados y rizados.
-          <ul>
-            <li>Rizos más definidos durante 24 horas</li>
-            <li>Reduce el frizz en un 87%</li>
-            <li>Ayuda a hidratar el cabello y mejora el brillo</li>
-          </ul>
-        </p>
-        <div class="card-meta">200 ml · Ref. 46622</div>
+    <!-- 23 -->
+    <div class="card">
+      <div class="card-img">
+        <div class="badge discount">−44%</div>
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46622%2F46622_1.png&MediaId=19714947&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Shampoo Definidor de Rizos DUOLOGI"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$199.90 MX</div>
-        <span class="price-old">$360.00</span>
+      <div class="card-info">
+        <div>
+          <p class="tag">Duologi</p>
+          <h2 class="product-name">Shampoo Definidor de Rizos DUOLOGI</h2>
+          <div class="divider"></div>
+          <p class="desc">Shampoo nutritivo que ayuda a definir los rizos, limpia suavemente y nutre el cabello con ingredientes para el cuidado de la piel. Óptimo para cabellos ondulados y rizados.
+            <ul>
+              <li>Rizos más definidos durante 24 horas</li>
+              <li>Reduce el frizz en un 87%</li>
+              <li>Ayuda a hidratar el cabello y mejora el brillo</li>
+            </ul>
+          </p>
+          <div class="card-meta">200 ml · Ref. 46622</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$199.90 MX</div>
+          <span class="price-old">$360.00</span>
+        </div>
       </div>
     </div>
-  </div>
+  </div><!-- /capilar -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Maquillaje</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ MAQUILLAJE ════════════════════════════ -->
+  <div class="section-group" data-group="maquillaje">
+    <p class="section-label">Maquillaje</p>
 
-  <!-- 24 · Base Ultrafina Perfeccionadora Giordani Gold -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Oriflame · Giordani Gold</p>
-        <h2 class="product-name">Base Ultrafina Perfeccionadora Efecto Natural</h2>
-        <div class="divider"></div>
-        <p class="desc">Base ultrafina perfeccionadora acabado natural.
-          <ul>
-            <li>La piel luce luminosa, difuminando imperfecciones para una apariencia más joven.</li>
-            <li>Base con FPS 12 para proteger la piel de los radicales libres.</li>
-            <li>Ideal para piel normal y grasa.</li>
-          </ul>
-        </p>
+    <!-- 24 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Oriflame · Giordani Gold</p>
+          <h2 class="product-name">Base Ultrafina Perfeccionadora Efecto Natural</h2>
+          <div class="divider"></div>
+          <p class="desc">Base ultrafina perfeccionadora acabado natural.
+            <ul>
+              <li>La piel luce luminosa, difuminando imperfecciones para una apariencia más joven.</li>
+              <li>Base con FPS 12 para proteger la piel de los radicales libres.</li>
+              <li>Ideal para piel normal y grasa.</li>
+            </ul>
+          </p>
+        </div>
+        <div class="price-row"><div class="price-arrow">$330.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$330.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F32923%2F32923_1.png&MediaId=9888184&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Base Ultrafina Giordani Gold"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F32923%2F32923_1.png&MediaId=9888184&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Base Ultrafina Giordani Gold"/>
-    </div>
-  </div>
 
-  <!-- 25 · Base de Maquillaje Eternal Glow FPS 25 -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F43243%2F43243_2.png&MediaId=18142015&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Base Eternal Glow FPS 25"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Giordani Gold</p>
-        <h2 class="product-name">Base de Maquillaje Eternal Glow FPS 25</h2>
-        <div class="divider"></div>
-        <p class="desc">Base de maquillaje líquida profundamente hidratante que proporciona potentes beneficios para el cuidado de la piel y una cobertura radiante. Certificada por la Vegan Society™.
-          <ul>
-            <li>Fórmula con 90% de ácido hialurónico y niacinamida que revitaliza, rellena y alisa la piel</li>
-            <li>Restaura la luminosidad natural de la piel al instante y con el paso del tiempo</li>
-            <li>Hidratación duradera durante 8 horas, clínicamente probada</li>
-          </ul>
-        </p>
-        <div class="card-meta">30 ml · Ref. 43244</div>
+    <!-- 25 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F43243%2F43243_2.png&MediaId=18142015&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Base Eternal Glow FPS 25"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$570.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Giordani Gold</p>
+          <h2 class="product-name">Base de Maquillaje Eternal Glow FPS 25</h2>
+          <div class="divider"></div>
+          <p class="desc">Base de maquillaje líquida profundamente hidratante que proporciona potentes beneficios para el cuidado de la piel y una cobertura radiante. Certificada por la Vegan Society™.
+            <ul>
+              <li>Fórmula con 90% de ácido hialurónico y niacinamida que revitaliza, rellena y alisa la piel</li>
+              <li>Restaura la luminosidad natural de la piel al instante y con el paso del tiempo</li>
+              <li>Hidratación duradera durante 8 horas, clínicamente probada</li>
+            </ul>
+          </p>
+          <div class="card-meta">30 ml · Ref. 43244</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$570.00 MX</div></div>
       </div>
     </div>
-  </div>
+  </div><!-- /maquillaje -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Fragancias</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ FRAGANCIAS ════════════════════════════ -->
+  <div class="section-group" data-group="fragancias">
+    <p class="section-label">Fragancias</p>
 
-  <!-- 26 · Eclat Mademoiselle Eau de Toilette -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Eclat</p>
-        <h2 class="product-name">Eclat Mademoiselle Eau de Toilette</h2>
-        <div class="divider"></div>
-        <p class="desc">Evoca en tu piel una exótica y sublime experiencia, gracias a la delicada esencia de Hibisco blanco y sutiles notas acuáticas que te envolverán en el inigualable romanticismo parisino, el acompañamiento perfecto para la mujer joven.</p>
-        <div class="card-meta">50 ml · Ref. 46217</div>
+    <!-- 26 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Eclat</p>
+          <h2 class="product-name">Eclat Mademoiselle Eau de Toilette</h2>
+          <div class="divider"></div>
+          <p class="desc">Evoca en tu piel una exótica y sublime experiencia, gracias a la delicada esencia de Hibisco blanco y sutiles notas acuáticas que te envolverán en el inigualable romanticismo parisino, el acompañamiento perfecto para la mujer joven.</p>
+          <div class="card-meta">50 ml · Ref. 46217</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$540.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$540.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46217%2F46217_1.png&MediaId=19810939&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Eclat Mademoiselle"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46217%2F46217_1.png&MediaId=19810939&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Eclat Mademoiselle"/>
-    </div>
-  </div>
 
-  <!-- 27 · Eau de Toilette Ascendant -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F42490%2F42490_3.png&MediaId=21032596&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Eau de Toilette Ascendant"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Ascendant</p>
-        <h2 class="product-name">Eau de Toilette Ascendant</h2>
-        <div class="divider"></div>
-        <p class="desc">A la altura de cualquier ocasión con esta eau de toilette masculina y audaz que crea una primera impresión inolvidablemente poderosa.
-          <ul>
-            <li>Notas de salida de cardamomo aromático y bergamota picante</li>
-            <li>Corazón intrigante de hierbas y vainilla suave</li>
-            <li>Base especiada, oriental y masculina</li>
-          </ul>
-        </p>
-        <div class="card-meta">75 ml · Ref. 42490</div>
+    <!-- 27 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F42490%2F42490_3.png&MediaId=21032596&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Eau de Toilette Ascendant"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$640.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Ascendant</p>
+          <h2 class="product-name">Eau de Toilette Ascendant</h2>
+          <div class="divider"></div>
+          <p class="desc">A la altura de cualquier ocasión con esta eau de toilette masculina y audaz que crea una primera impresión inolvidablemente poderosa.
+            <ul>
+              <li>Notas de salida de cardamomo aromático y bergamota picante</li>
+              <li>Corazón intrigante de hierbas y vainilla suave</li>
+              <li>Base especiada, oriental y masculina</li>
+            </ul>
+          </p>
+          <div class="card-meta">75 ml · Ref. 42490</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$640.00 MX</div></div>
       </div>
     </div>
-  </div>
 
-  <!-- 28 · Every Me Drama Queen Iris Eau de Toilette  ★ NUEVO -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">Every Me</p>
-        <h2 class="product-name">Every Me Drama Queen Iris Eau de Toilette</h2>
-        <div class="divider"></div>
-        <p class="desc">Fragancia femenina intensa y magnética con notas de iris que te harán sentir protagonista de cada momento. Una eau de toilette para la mujer que no pasa desapercibida.</p>
-        <div class="card-meta">50 ml · Ref. 47498</div>
+    <!-- 28 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">Every Me</p>
+          <h2 class="product-name">Every Me Drama Queen Iris Eau de Toilette</h2>
+          <div class="divider"></div>
+          <p class="desc">Fragancia femenina intensa y magnética con notas de iris que te harán sentir protagonista de cada momento. Una eau de toilette para la mujer que no pasa desapercibida.</p>
+          <div class="card-meta">50 ml · Ref. 47498</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$640.00 MX</div></div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$640.00 MX</div>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47498%2F47498_4.png&MediaId=19885247&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Every Me Drama Queen Iris"/>
       </div>
     </div>
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F47498%2F47498_4.png&MediaId=19885247&Version=1&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Every Me Drama Queen Iris Eau de Toilette"/>
-    </div>
-  </div>
 
-  <!-- 29 · Fragancia Corporal Possess Mythical Seduction  ★ NUEVO -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46806%2F46806_1.png&MediaId=20050335&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Fragancia Corporal Possess Mythical Seduction"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Possess</p>
-        <h2 class="product-name">Fragancia Corporal Possess Mythical Seduction</h2>
-        <div class="divider"></div>
-        <p class="desc">Una bruma de fragancia luminosa y sensual con voluptuosa ciruela oscura, delicada rosa, chispeante lichi y elegante almizcle limpio. Fácil de llevar a todas tus aventuras.
-          <ul>
-            <li>TOP: Acorde de ciruela oscura, aceite de mandarina, acorde de lichi</li>
-            <li>CORAZÓN: Acorde Peonía, Acorde Rosa, Acorde Ciclamen</li>
-            <li>BASE: Almizcle limpio, aceite de cedro, acorde de vainilla</li>
-          </ul>
-        </p>
-        <div class="card-meta">100 ml · Ref. 46806</div>
+    <!-- 29 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46806%2F46806_1.png&MediaId=20050335&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Fragancia Corporal Possess Mythical Seduction"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$370.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Possess</p>
+          <h2 class="product-name">Fragancia Corporal Possess Mythical Seduction</h2>
+          <div class="divider"></div>
+          <p class="desc">Una bruma de fragancia luminosa y sensual con voluptuosa ciruela oscura, delicada rosa, chispeante lichi y elegante almizcle limpio. Fácil de llevar a todas tus aventuras.
+            <ul>
+              <li>TOP: Acorde de ciruela oscura, aceite de mandarina, acorde de lichi</li>
+              <li>CORAZÓN: Acorde Peonía, Acorde Rosa, Acorde Ciclamen</li>
+              <li>BASE: Almizcle limpio, aceite de cedro, acorde de vainilla</li>
+            </ul>
+          </p>
+          <div class="card-meta">100 ml · Ref. 46806</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$370.00 MX</div></div>
       </div>
     </div>
-  </div>
+  </div><!-- /fragancias -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Cuidado masculino</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ MASCULINO ════════════════════════════ -->
+  <div class="section-group" data-group="masculino">
+    <p class="section-label">Cuidado masculino</p>
 
-  <!-- 30 · Espuma Limpiadora y de Afeitar 2 en 1 North For Men Subzero  ★ NUEVO -->
-  <div class="card reverse">
-    <div class="card-info">
-      <div>
-        <p class="tag">North For Men</p>
-        <h2 class="product-name">Espuma Limpiadora y de Afeitar 2 en 1 North For Men Subzero</h2>
-        <div class="divider"></div>
-        <p class="desc">Espuma 2 en 1 que limpia y afeita en un solo paso, formulada específicamente para el cuidado de la piel masculina.
-          <ul>
-            <li>Con tecnología Glyde que ayuda a proporcionar el afeitado más apurado y fácil de deslizar</li>
-            <li>Formulado con D-Pantenol para una hidratación completa</li>
-            <li>Dermatológicamente probado y desarrollado específicamente para hombres</li>
-          </ul>
-        </p>
-        <div class="card-meta">200 ml · Ref. 46632</div>
+    <!-- 30 -->
+    <div class="card reverse">
+      <div class="card-info">
+        <div>
+          <p class="tag">North For Men</p>
+          <h2 class="product-name">Espuma Limpiadora y de Afeitar 2 en 1 North For Men Subzero</h2>
+          <div class="divider"></div>
+          <p class="desc">Espuma 2 en 1 que limpia y afeita en un solo paso, formulada específicamente para el cuidado de la piel masculina.
+            <ul>
+              <li>Con tecnología Glyde que ayuda a proporcionar el afeitado más apurado y fácil de deslizar</li>
+              <li>Formulado con D-Pantenol para una hidratación completa</li>
+              <li>Dermatológicamente probado y desarrollado específicamente para hombres</li>
+            </ul>
+          </p>
+          <div class="card-meta">200 ml · Ref. 46632</div>
+        </div>
+        <div class="price-row">
+          <div class="price-arrow">$199.90 MX</div>
+          <span class="price-old">$320.00</span>
+        </div>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$199.90 MX</div>
-        <span class="price-old">$320.00</span>
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46632%2F46632_1.png&MediaId=19264596&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Espuma Limpiadora North For Men"/>
       </div>
     </div>
-    <div class="card-img">
-      <!-- img/espuma-afeitar-north-for-men.jpg -->
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F46632%2F46632_1.png&MediaId=19264596&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Espuma Limpiadora y de Afeitar North For Men"/>
-    </div>
-  </div>
+  </div><!-- /masculino -->
 
-  <!-- ══════════════════════════════════════════════ -->
-  <p class="section-label">Sets &amp; regalos</p>
-  <!-- ══════════════════════════════════════════════ -->
+  <!-- ════════════════════════════ REGALOS ════════════════════════════ -->
+  <div class="section-group" data-group="regalos">
+    <p class="section-label">Sets &amp; regalos</p>
 
-  <!-- 31 · Lote Love Potion Cherry on Top -->
-  <div class="card">
-    <div class="card-img">
-      <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48083%2F48083_2.png&MediaId=20897438&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Lote Love Potion Cherry on Top"/>
-    </div>
-    <div class="card-info">
-      <div>
-        <p class="tag">Love Potion</p>
-        <h2 class="product-name">Lote Love Potion Cherry on Top</h2>
-        <div class="divider"></div>
-        <p class="desc">¡Regálale el último flechazo de cereza! El set incluye Love Potion Cherry on Top Hand Cream (75 ml) y Love Potion Cherry on Top Eau de Parfum (50 ml), ambos empaquetados en una caja de regalo personalizada.</p>
-        <div class="card-meta">2 uds · Ref. 46083</div>
+    <!-- 31 -->
+    <div class="card">
+      <div class="card-img">
+        <img src="https://media-cdn.oriflame.com/productImage?externalMediaId=product-management-media%2FProducts%2F48083%2F48083_2.png&MediaId=20897438&Version=2&w=1000&bc=%23f5f5f5&ib=%23f5f5f5&q=90&imageFormat=WebP" alt="Lote Love Potion Cherry on Top"/>
       </div>
-      <div class="price-row">
-        <div class="price-arrow">$1,230.00 MX</div>
+      <div class="card-info">
+        <div>
+          <p class="tag">Love Potion</p>
+          <h2 class="product-name">Lote Love Potion Cherry on Top</h2>
+          <div class="divider"></div>
+          <p class="desc">¡Regálale el último flechazo de cereza! El set incluye Love Potion Cherry on Top Hand Cream (75 ml) y Love Potion Cherry on Top Eau de Parfum (50 ml), ambos empaquetados en una caja de regalo personalizada.</p>
+          <div class="card-meta">2 uds · Ref. 46083</div>
+        </div>
+        <div class="price-row"><div class="price-arrow">$1,230.00 MX</div></div>
       </div>
     </div>
-  </div>
+  </div><!-- /regalos -->
 
 </main>
 
 <footer>
   <p>Catálogo &nbsp;·&nbsp; Todos los precios en MXN &nbsp;·&nbsp; Sujeto a disponibilidad</p>
 </footer>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const groups  = document.querySelectorAll('.section-group');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.section;
+
+      // actualizar botón activo
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // mostrar / ocultar secciones
+      groups.forEach(g => {
+        if (target === 'all' || g.dataset.group === target) {
+          g.classList.remove('hidden');
+        } else {
+          g.classList.add('hidden');
+        }
+      });
+
+      // scroll al inicio del contenido
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
 
 </body>
 </html>
